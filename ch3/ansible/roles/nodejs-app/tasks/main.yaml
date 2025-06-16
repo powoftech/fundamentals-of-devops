@@ -1,4 +1,4 @@
-- name: Add Node Yum repo        
+- name: Add Node Yum repo
   yum_repository:
     name: nodesource-nodejs
     description: Node.js Packages for x86_64 Linux RPM based distros
@@ -9,11 +9,11 @@
   yum:
     name: nodejs
 
-- name: Create app user          
+- name: Create app user
   user:
     name: app-user
 
-- name: Install pm2              
+- name: Install pm2
   npm:
     name: pm2
     version: latest

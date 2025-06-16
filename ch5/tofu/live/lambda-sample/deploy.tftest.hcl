@@ -20,7 +20,7 @@ run "validate" {
   }
 
   assert {
-    condition     = data.http.test_endpoint.response_body == "Fundamentals of DevOps!"
+    condition     = data.http.test_endpoint.response_body == "Hello, Phuong!"
     error_message = "Unexpected body: ${data.http.test_endpoint.response_body}"
   }
 }

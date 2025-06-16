@@ -1,16 +1,16 @@
 name: Tofu Plan
 
 on:
-  pull_request:                                                             
-    branches: ["master"]
-    paths: ["ch5/tofu/live/lambda-sample/**"]
+  pull_request:
+    branches: ['master']
+    paths: ['ch5/tofu/live/lambda-sample/**']
 
 jobs:
   plan:
-    name: "Tofu Plan"
+    name: 'Tofu Plan'
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: write                                                  
+      pull-requests: write
       id-token: write
       contents: read
     steps:
@@ -19,20 +19,20 @@ jobs:
       - uses: aws-actions/configure-aws-credentials@v4
         with:
           # TODO: fill in your IAM role ARN!
-          role-to-assume: arn:aws:iam::593793056386:role/lambda-sample-plan 
+          role-to-assume: arn:aws:iam::593793056386:role/lambda-sample-plan
           role-session-name: plan-${{ github.run_number }}-${{ github.actor }}
           aws-region: us-east-1
 
       - uses: opentofu/setup-opentofu@v1
 
-      - name: tofu plan                                                     
+      - name: tofu plan
         id: plan
         working-directory: ch5/tofu/live/lambda-sample
         run: |
           tofu init -no-color -input=false
           tofu plan -no-color -input=false -lock=false
 
-      - uses: peter-evans/create-or-update-comment@v4                       
+      - uses: peter-evans/create-or-update-comment@v4
         if: always()
         env:
           RESULT_EMOJI: ${{ steps.plan.outcome == 'success' && '✅' || '⚠️' }}

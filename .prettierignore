@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+
+.terraform/
+*.tfstate*
+.terraform
+*.iml
+*.idea
+*.DS_Store

@@ -1,0 +1,15 @@
+{
+  "name": "sample-app-packer",
+  "version": "0.0.1",
+  "description": "Sample app for 'Fundamentals of DevOps and Software Delivery",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.830.0"
+  }
+}
